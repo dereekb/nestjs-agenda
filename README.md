@@ -1,7 +1,7 @@
 # nestjs-agenda
 [Agenda](https://github.com/agenda/agenda) module for [Nestjs](https://github.com/nestjs/nest)
 
-Agenda version is `^3.1.0`
+Agenda version is `^4.1.0`
 
 # Installation
 ```
@@ -30,7 +30,11 @@ import { AgendaModule } from 'nestjs-agenda';
     AgendaModule.registerAsync({
       imports: [ConfigModule],
       useFactory: async (config: ConfigService) => ({
-        db: { address: config.get('MONGODB_URI') },
+        db: { 
+          address: config.get('MONGODB_URI'),
+          connection: undefined,
+          options: {}
+        },
       }),
       inject: [ConfigService],
     }),
